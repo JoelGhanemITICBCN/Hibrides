@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practica/ui_widgets/comptador_enter.dart';
+import 'package:llista_compra/ui_widgets/comptador_enter.dart';
 
 void main() {
   runApp(MyApp());
@@ -104,14 +104,21 @@ class ElMeuBody extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(items[index]),
-                      const Padding(
-                        padding: EdgeInsets.all(0.0),
-                        child: ComptadorEnter(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: ComptadorEnter(),
+                          ),
+
+                          //Papelera
+                          IconButton(
+                            icon: Icon(Icons.delete),
+                            onPressed: () => {removeItem(items[index])},
+                          )
+                        ],
                       ),
-                      IconButton(
-                        icon: Icon(Icons.delete),
-                        onPressed: () => {removeItem(items[index])},
-                      )
                     ]),
               );
             },

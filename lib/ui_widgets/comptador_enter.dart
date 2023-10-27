@@ -28,25 +28,27 @@ class _ComptadorEnterState extends State<ComptadorEnter> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Text(
           '$comptador',
         ),
-        Row(children: [
-          Column(
-            children: [
-              IconButton(
-                icon: const Icon(Icons.add),
-                onPressed: _incrementa,
-              ),
-              IconButton(
-                icon: const Icon(Icons.remove),
-                onPressed: _decrementa,
-              ),
-            ],
-          )
-        ]),
+        Container(
+          child: Row(children: [
+            Column(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.add),
+                  onPressed: _incrementa,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.remove),
+                  onPressed: _decrementa,
+                ),
+              ],
+            )
+          ]),
+        ),
       ],
     );
   }
