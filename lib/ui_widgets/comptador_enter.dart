@@ -1,55 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:llista_compra/models/llista_articles.dart';
+import 'package:provider/provider.dart';
 
-class ComptadorEnter extends StatefulWidget {
-  const ComptadorEnter({super.key});
+class ComptadorEnter extends StatelessWidget {
+  final int? index;
+  ComptadorEnter({super.key, required this.index});
 
   @override
   // ignore: library_private_types_in_public_api
-  _ComptadorEnterState createState() => _ComptadorEnterState();
-}
 
-class _ComptadorEnterState extends State<ComptadorEnter> {
-  int comptador = 1;
-
-  void _incrementa() {
-    setState(() {
-      comptador++;
-    });
-  }
-
-  void _decrementa() {
-    setState(() {
-      if (comptador > 1) {
-        comptador--;
-      }
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Text(
-          '$comptador',
-        ),
-        Container(
-          child: Row(children: [
+    return Consumer<LlistaArticles>(builder: (context, LlistaArticles, _) {
+      var article = LlistaArticles.itemAt(index ?? 0);
+      var contador = article.quantity;
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            '$contador',
+          ),
+          Row(children: [
             Column(
               children: [
                 IconButton(
                   icon: const Icon(Icons.add),
-                  onPressed: _incrementa,
+                  onPressed: () {
+                    LlistaArticles.incrementaQuantitat(article);
+                  },
                 ),
                 IconButton(
-                  icon: const Icon(Icons.remove),
-                  onPressed: _decrementa,
-                ),
+                    icon: const Icon(Icons.remove),
+                    onPressed: () {
+                      LlistaArticles.decrementaQuantitat(article);
+                    }),
               ],
             )
           ]),
-        ),
-      ],
-    );
+        ],
+      );
+    });
   }
 }
