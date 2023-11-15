@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:llista_compra/models/llista_articles.dart';
+import 'package:namer_app/models/llista_articles.dart';
 import 'package:provider/provider.dart';
 
 class ComptadorEnter extends StatelessWidget {
